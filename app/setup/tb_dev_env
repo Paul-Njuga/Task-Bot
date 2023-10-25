@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Script to set environment variables for Task Bot project
+# Usage: source tb_dev_env
+
+export TB_ENV=dev
+export TB_MYSQL_USER=tb_dev
+export TB_MYSQL_PWD=tb_dev_pwd
+export TB_MYSQL_HOST=localhost
+export TB_MYSQL_DB=tb_dev_db
+export TB_TYPE_STORAGE=db
+export TB_API_HOST='0.0.0.0'
+export TB_API_PORT='5000'
