@@ -8,6 +8,7 @@ sqlalchemy = "*"
 mysqlclient = "*"
 flask = "*"
 pycodestyle = "*"
+replicate = "*"
 
 [dev-packages]
 
