@@ -4,8 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+sqlalchemy = "*"
+mysqlclient = "*"
+flask = "*"
+pycodestyle = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.4"
+python_version = "3.12"
+python_full_version = "3.12.0"
