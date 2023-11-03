@@ -9,6 +9,11 @@ mysqlclient = "*"
 flask = "*"
 pycodestyle = "*"
 replicate = "*"
+flask-cors = "*"
+flasgger = "*"
+aiohttp = "==3.9.0b0"
+requests = "*"
+openai = "*"
 
 [dev-packages]
 
