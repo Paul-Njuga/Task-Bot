@@ -11,9 +11,7 @@ class SubTask(Basemodel, Base):
     """Defines user sub tasks"""
     __tablename__ = 'sub_tasks'
     task_id = Column(String(60), ForeignKey('tasks.id'), nullable=False)
-    title = Column(String(100), nullable=False)
-    description = Column(String(255), nullable=True)
-    due_date = Column(DateTime, nullable=True)
+    title = Column(String(500), nullable=False)
     completed = Column(Boolean, default=False)
     task = relationship("Task", back_populates="sub_tasks")
 
