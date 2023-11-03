@@ -13,8 +13,8 @@ class Task(Basemodel, Base):
     """Defines user tasks"""
     __tablename__ = 'tasks'
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-    title = Column(String(100), nullable=False)
-    description = Column(String(255), nullable=True)
+    title = Column(String(500), nullable=False)
+    description = Column(String(1000), nullable=True)
     due_date = Column(DateTime, nullable=True)
     completed = Column(Boolean, default=False)
     user = relationship("User", back_populates="task")
