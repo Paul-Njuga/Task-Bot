@@ -1,0 +1,30 @@
+.chatbot-open {
+	position: absolute;
+	bottom: 55px;
+	right: 50px;
+	height: 45px;
+	width: 45px;
+	display: flex;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: #fff;
+}
+
+.chatbot-open:hover {
+	background: #bdbdbd;
+}
+
+.chatbot-open img {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	color: currentcolor;
+}
+
+.chatbot-panel-open .chatbot-open {
+	display: none !important;
+}
