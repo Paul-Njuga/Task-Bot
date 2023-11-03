@@ -73,12 +73,22 @@ class DBStorage:
                 return value
         return None
 
-    def get_subtasks(self, id):
+    def get_tasks(self, user_id):
+        """
+        Returns tasks object for a given User
+        None if not found
+        """
+        user = models.storage.get(User, user_id)
+        if user:
+            return user.task
+        return None
+
+    def get_subtasks(self, task_id):
         """
         Returns a list of all subtasks for a given Task
         None if not found
         """
-        task = models.storage.get(Task, id)
+        task = models.storage.get(Task, task_id)
         if task:
             return task.sub_tasks
         return None
