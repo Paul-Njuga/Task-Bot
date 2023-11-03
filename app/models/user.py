@@ -12,7 +12,7 @@ class User(Basemodel, Base):
     __tablename__ = 'users'
     username = Column(String(80), nullable=False)
     email = Column(String(120), nullable=False)
-    password = Column(String(60), nullable=False)
+    password = Column(String(255), nullable=False)
     task = relationship("Task", back_populates="user")
 
     def __init__(self, *args, **kwargs):
