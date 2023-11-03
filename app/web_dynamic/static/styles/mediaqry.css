@@ -1,0 +1,42 @@
+@media screen and (max-width: 900px) {
+	.left-bar {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.wrapper {
+		flex-direction: column;
+		overflow-y: auto;
+	}
+	.task-manager {
+		flex-direction: column;
+		overflow-y: auto;
+		width: 100%;
+		display: block;
+	}
+	.left-bar {
+		display: none;
+	}
+	.tasks-wrapper {
+		height: auto;
+	}
+	.chatbot-panel-open .chatbot{
+		flex-direction: column;
+		overflow-y: auto;
+		width: 100%;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.page-content {
+		padding: 40px 10px 0 10px;
+	}
+	.category {
+		padding: 20px;
+	}
+	.chatbot-panel-open .chatbot .chat-content {
+		padding: 40px 10px 0 10px;
+	}
+}
