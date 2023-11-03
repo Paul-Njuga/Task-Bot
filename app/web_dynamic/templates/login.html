@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="../static/styles/login-signup.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<h1>Login</h1>
+			<form method="POST" action="{{ url_for('login') }}">
+				<div class="msg">{{ msg }}</div>
+				<input type="text" name="username" placeholder="Enter your username">
+				<input type="password" name="password" placeholder="Enter your password">
+				<button class="button">Login</button>
+			</form>
+			<div class="member">
+				Don't have an account? <a class="member" href="{{ url_for('signup') }}">
+					Register Now
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
