@@ -1,0 +1,142 @@
+* {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+}
+
+body {
+	background-image: url('../images/landpg.png');
+	background-size: cover;
+	background-position-y: 45%;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+header {
+	background-color: #000;
+	color: #fff;
+	border-radius: 3px;
+}
+
+footer {
+	margin-top: auto;
+	font-size: 15px;
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+	color: #000;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.logo-img {
+	display: flex;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: white;
+}
+
+#task-bot-logo {
+	width: 40px;
+	height: auto;
+	margin-left: 5px;
+	border-radius: 50%;
+	color: currentcolor;
+	animation: spin 3s infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.logo-header {
+	margin: 15px 10px;
+	font-size: 30px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+.right-nav {
+	list-style: none;
+}
+
+.right-nav li {
+	display: inline;
+	padding-left: 10px;
+	margin-right: 10px;
+}
+
+.right-nav li a {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* Description Section Styles */
+.description {
+	text-align: left;
+	padding: 50px;
+	background-image: inherit;
+}
+
+.description h1 {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	color: #fff;
+	text-shadow:
+		-1px -1px 0 #000,
+		2px -1px 0 #000,
+		-1px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+.description p {
+	font-size: 1.2em;
+	margin-top: 0;
+	color: #fff;
+}
+
+a {
+	margin-top: 50px;
+}
+
+.login-button {
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #000;
+	border-radius: 30px;
+	transition: all 0.3s;
+	display: block;
+	width: 90px;
+	margin-left: 15%;
+	margin-top: 0;
+}
+
+.login-button:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #000;
+}
