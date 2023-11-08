@@ -16,6 +16,9 @@
 	<link rel="stylesheet" href="../static/styles/chatbot.css" />
 	<link rel="stylesheet" href="../static/styles/mediaqry.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="../static/scripts/category_toggle.js" defer></script>
+	<script src="../static/scripts/task_done.js" defer></script>
+	<script src="../static/scripts/filter_toggle.js" defer></script>
 	<script src="../static/scripts/chatbot_toggle.js" defer></script>
 	<script src="../static/scripts/chatbot.js" defer></script>
 </head>
@@ -29,20 +32,21 @@
 			<div class="left-bar">
 				<!-- left content start -->
 				<div class="left-content">
-					<ul class="solo-task">
-						<li class="item">
-							<img src="../static/svg/today.svg" alt="" class="sun-today">
-							<span>Tasks</span>
-						</li>
-						<li class="item">
-							<img src="../static/svg/completed.svg" alt="" class="tick-completed">
-							<span>Completed</span>
-						</li>
-						<li class="item">
-							<img src="../static/svg/all.svg" alt="" class="window-all">
-							<span>All</span>
-						</li>
-					</ul>
+					<div class="left-bar-item">
+						<input class="bar-item" name="item" type="radio" id="filter-tasks" />
+						<img src="../static/svg/today.svg" alt="" class="sun-today">
+						<label class="filter" for="filter-tasks">Tasks</label>
+					</div>
+					<div class="left-bar-item">
+						<input class="bar-item" name="item" type="radio" id="filter-completed" />
+						<img src="../static/svg/completed.svg" alt="" class="tick-completed">
+						<label class="filter" for="filter-completed">Completed</label>
+					</div>
+					<div class="left-bar-item">
+						<input class="bar-item" name="item" type="radio" id="filter-all" />
+						<img src="../static/svg/all.svg" alt="" class="window-all">
+						<label class="filter" for="filter-all">All</label>
+					</div>
 				</div>
 				<!-- left content end -->
 			</div>
@@ -54,7 +58,7 @@
 				<!-- content categories start -->
 				<div class="content-categories">
 					<div class="label-wrapper">
-						<input class="nav-item" name="nav" type="radio" id="opt-1" />
+						<input class="nav-item" name="nav" type="radio" id="opt-1" checked />
 						<label class="category" for="opt-1">To Do</label>
 					</div>
 					<div class="label-wrapper">
@@ -67,7 +71,7 @@
 				<!-- tasks wrapper start -->
 				<div class="tasks-wrapper">
 					<div class="add-task">
-						<form class="new-task" method="POST" action="{{ url_for('index') }}">
+						<form class="new-task" method="POST" action="{{ url_for('add_task') }}">
 							<input class="plus-task" type="text" name="new-task"
 								placeholder="Add a task, press [ Enter ] to save">
 						</form>
@@ -81,7 +85,9 @@
 								<label for="{{ task.id }}">
 									<span class="label-text">{{ task.title }}</span>
 								</label>
-								<img src="../static/svg/subtasks.svg" alt="" class="dotmenu-subtasks">
+								<button class="task-menu-open">
+									<img src="../static/svg/subtasks.svg" alt="" class="dotmenu-subtasks">
+								</button>
 							</div>
 						</li>
 						{% endfor %}
@@ -99,7 +105,7 @@
 		</div>
 		<!-- main page left end -->
 
-		<!-- chatbot bar right start -->
+		<!-- chatbot page right start -->
 		<div class="chatbot">
 			<div class="header">
 				<span class="chatbot-header">Chat Bot</span>
@@ -113,12 +119,12 @@
 					</li>
 				</ul>
 				<div class="chat-input">
-					<textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+					<textarea name="user-input" placeholder="Enter a message..." spellcheck="false" required></textarea>
 					<span id="send-btn" class="material-symbols-rounded">send</span>
 				</div>
 			</div>
 		</div>
-		<!-- chatbot bar right end -->
+		<!-- chatbot page right end -->
 	</div>
 	<!-- side panel wrapper end -->
 </body>
