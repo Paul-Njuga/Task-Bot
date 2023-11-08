@@ -85,7 +85,7 @@ class DBStorage:
 
     def get_subtasks(self, task_id):
         """
-        Returns a list of all subtasks for a given Task
+        Returns the subtasks object for a given Task
         None if not found
         """
         task = models.storage.get(Task, task_id)
