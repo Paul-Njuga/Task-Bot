@@ -1,131 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Task Bot</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
-		<link rel="stylesheet" href="styles/index.css" />
-		<link rel="stylesheet" href="styles/tasks.css" />
-		<link rel="stylesheet" href="styles/botbtn.css" />
-		<link rel="stylesheet" href="styles/chatbot.css" />
-		<link rel="stylesheet" href="styles/mediaqry.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    	<script src="./scripts/chatbot_toggle.js" defer></script>
-    	<script src="./scripts/chatbot.js" defer></script>
-	</head>
-	<body>
-		<!-- side panel wrapper start -->
-		<div class="wrapper">
-			<!-- main page left start -->
-			<div class="task-manager">
-				<!-- left bar start -->
-				<div class="left-bar">
-					<!-- left content start -->
-					<div class="left-content">
-						<ul class="solo-task">
-							<li class="item">
-								<img src="svg/today.svg" alt="" class="sun-today">
-								<span>Today</span>
-							</li>
-							<li class="item">
-								<img src="svg/calendar.svg" alt="" class="calendar-upcoming">
-								<span>Upcoming</span>
-							</li>
-							<li class="item">
-								<img src="svg/all.svg" alt="" class="window-all">
-								<span>All</span>
-							</li>
-							<li class="item">
-								<img src="svg/completed.svg" alt="" class="tick-completed">
-								<span>Completed</span>
-							</li>
-						</ul>
-					</div>
-					<!-- left content end -->
-				</div>
-				<!-- left bar end -->
 
-				<!-- page content start -->
-				<div class="page-content">
-					<div class="header">Todays Tasks</div>
-					<!-- content categories start -->
-					<div class="content-categories">
-						<div class="label-wrapper">
-							<input class="nav-item" name="nav" type="radio" id="opt-1" />
-							<label class="category" for="opt-1">To Do</label>
-						</div>
-						<div class="label-wrapper">
-							<input class="nav-item" name="nav" type="radio" id="opt-2" />
-							<label class="category" for="opt-2">Completed</label>
-						</div>
-					</div>
-					<!-- content categories end -->
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Task Bot</title>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+	<link rel="stylesheet" href="styles/index.css" />
+	<link rel="stylesheet" href="styles/tasks.css" />
+	<link rel="stylesheet" href="styles/task-info.css">
+	<link rel="stylesheet" href="styles/botbtn.css" />
+	<link rel="stylesheet" href="styles/chatbot.css" />
+	<link rel="stylesheet" href="styles/mediaqry.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./scripts/task-info_toggle.js" defer></script>
+	<script src="./scripts/chatbot_toggle.js" defer></script>
+	<script src="./scripts/chatbot.js" defer></script>
+</head>
 
-					<!-- tasks wrapper start -->
-					<div class="tasks-wrapper">
-						<div class="add-task">
-							<form class="new-task" action="#">
-								<input class="plus-task" type="text" name="new-task" placeholder="Add a task, press [ Enter ] to save" >
-							</form>
-						</div>
-						<div class="task">
-							<input class="task-item" name="task" type="checkbox" id="item-1" />
-							<label for="item-1">
-								<span class="label-text">Create TaskBot webapp</span>
-							</label>
-							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
-						</div>
-						<div class="task">
-							<input class="task-item" name="task" type="checkbox" id="item-2" />
-							<label for="item-2">
-								<span class="label-text">Code in my sleep</span>
-							</label>
-							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
-						</div>
-						<div class="task">
-							<input class="task-item" name="task" type="checkbox" id="item-3" />
-							<label for="item-3">
-								<span class="label-text">Become a smashing hit soft. eng.</span>
-							</label>
-							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
-						</div>
-					</div>
-					<!-- tasks wrapper end -->
-				</div>
-				<!-- page content end -->
-
-				<!-- chatbot toggler start -->
-				<button class="chatbot-open">
-					<img src="svg/robot.svg" alt="" class="open-chatbot">
-				</button>
-				<!-- chatbot toggler end -->
-			</div>
-			<!-- main page left end -->
-
-			<!-- chatbot bar right start -->
-			<div class="chatbot">
-				<div class="header">
-					<span class="chatbot-header">Chat Bot</span>
-					<img src="svg/close.svg" alt="" class="close-chatbot">
-				</div>
-				<div class="chat-content">
-					<ul class="chatbox">
-						<li class="chat incoming">
-							<span class="material-symbols-outlined">smart_toy</span>
-							<p>Hi there 👋<br>What tasks can I help you with today?</p>
+<body>
+	<!-- side panel wrapper start -->
+	<div class="wrapper">
+		<!-- main page left start -->
+		<div class="task-manager">
+			<!-- left bar start -->
+			<div class="left-bar">
+				<!-- left content start -->
+				<div class="left-content">
+					<ul class="solo-task">
+						<li class="item">
+							<img src="svg/today.svg" alt="" class="sun-today">
+							<span>Today</span>
+						</li>
+						<li class="item">
+							<img src="svg/calendar.svg" alt="" class="calendar-upcoming">
+							<span>Upcoming</span>
+						</li>
+						<li class="item">
+							<img src="svg/all.svg" alt="" class="window-all">
+							<span>All</span>
+						</li>
+						<li class="item">
+							<img src="svg/completed.svg" alt="" class="tick-completed">
+							<span>Completed</span>
 						</li>
 					</ul>
-					<div class="chat-input">
-						<textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
-						<span id="send-btn" class="material-symbols-rounded">send</span>
+				</div>
+				<!-- left content end -->
+			</div>
+			<!-- left bar end -->
+
+			<!-- page content start -->
+			<div class="page-content">
+				<div class="header">Todays Tasks</div>
+				<!-- content categories start -->
+				<div class="content-categories">
+					<div class="label-wrapper">
+						<input class="nav-item" name="nav" type="radio" id="opt-1" />
+						<label class="category" for="opt-1">To Do</label>
+					</div>
+					<div class="label-wrapper">
+						<input class="nav-item" name="nav" type="radio" id="opt-2" />
+						<label class="category" for="opt-2">Completed</label>
 					</div>
 				</div>
+				<!-- content categories end -->
+
+				<!-- tasks wrapper start -->
+				<div class="tasks-wrapper">
+					<div class="add-task">
+						<form class="new-task" action="#">
+							<input class="plus-task" type="text" name="new-task"
+								placeholder="Add a task, press [ Enter ] to save">
+						</form>
+					</div>
+					<div class="task">
+						<input class="task-item" name="task" type="checkbox" id="item-1" />
+						<label for="item-1">
+							<span class="label-text">Create TaskBot webapp</span>
+						</label>
+						<button class="task-menu-open">
+							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
+						</button>
+					</div>
+					<div class="task">
+						<input class="task-item" name="task" type="checkbox" id="item-2" />
+						<label for="item-2">
+							<span class="label-text">Code in my sleep</span>
+						</label>
+						<button class="task-menu-open">
+							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
+						</button>
+					</div>
+					<div class="task">
+						<input class="task-item" name="task" type="checkbox" id="item-3" />
+						<label for="item-3">
+							<span class="label-text">Become a smashing hit soft. eng.</span>
+						</label>
+						<button class="task-menu-open">
+							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
+						</button>
+					</div>
+				</div>
+				<!-- tasks wrapper end -->
 			</div>
-			<!-- chatbot bar right end -->
+			<!-- page content end -->
+
+			<!-- chatbot toggler start -->
+			<button class="chatbot-open">
+				<img src="svg/robot.svg" alt="" class="open-chatbot">
+			</button>
+			<!-- chatbot toggler end -->
 		</div>
-		<!-- side panel wrapper end -->
-	</body>
+		<!-- main page left end -->
+
+		<!-- task container start -->
+		<div class="task-container">
+			<div class="header">
+				<span class="task-header">Task Title</span>
+				<img src="svg/close.svg" alt="" class="close-task">
+			</div>
+			<!-- task details start -->
+			<div class="task-details">
+				<div class="due-date">
+					<label>Due Date</label>
+					<span>Today</span>
+				</div>
+				<div class="project">
+					<label>Project</label>
+					<span>Tasks</span>
+				</div>
+				<div class="task-description">
+					<textarea name="task-input" placeholder="Add a note ..." spellcheck="false"></textarea>
+				</div>
+				<!-- subtasks wrapper start -->
+				<div class="subtasks-wrapper">
+					<div class="add-subtask">
+						<form class="new-subtask" action="#">
+							<input class="plus-subtask" type="text" name="new-subtask"
+								placeholder="Add a subtask, press [ Enter ] to save">
+						</form>
+					</div>
+					<div class="subtask">
+						<input class="subtask-item" name="subtask" type="checkbox" id="item-1" />
+						<label for="item-1">
+							<span class="label-text">Create subtask for a task</span>
+						</label>
+					</div>
+					<div class="subtask">
+						<input class="subtask-item" name="subtask" type="checkbox" id="item-2" />
+						<label for="item-2">
+							<span class="label-text">Another one</span>
+						</label>
+					</div>
+					<div class="subtask">
+						<input class="subtask-item" name="subtask" type="checkbox" id="item-3" />
+						<label for="item-3">
+							<span class="label-text">DJ Khaleed</span>
+						</label>
+					</div>
+				</div>
+				<!-- subtasks wrapper end -->
+			</div>
+			<!-- task details end -->
+
+			<!-- task footer start -->
+			<div class="footer">
+				<span>Created on Today</span>
+			</div>
+			<!-- task footer end -->
+		</div>
+		<!-- task container end -->
+
+		<!-- chatbot bar right start -->
+		<div class="chatbot">
+			<div class="header">
+				<span class="chatbot-header">Chat Bot</span>
+				<img src="svg/close.svg" alt="" class="close-chatbot">
+			</div>
+			<div class="chat-content">
+				<ul class="chatbox">
+					<li class="chat incoming">
+						<span class="material-symbols-outlined">smart_toy</span>
+						<p>Hi there 👋<br>What tasks can I help you with today?</p>
+					</li>
+				</ul>
+				<div class="chat-input">
+					<textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+					<span id="send-btn" class="material-symbols-rounded">send</span>
+				</div>
+			</div>
+		</div>
+		<!-- chatbot bar right end -->
+	</div>
+	<!-- side panel wrapper end -->
+</body>
+
 </html>
