@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+	--checkbox-color: #ee5610;
+	--task-color: #777982;
+}
+
+
+.task-container {
+	display: none;
+	flex-direction: column;
+	width: 500px;
+	background: #fff;
+	border-left: 1px solid #e3e7f7;
+	padding: 20px 15px 0 15px;
+}
+
+.task-panel-open .task-container {
+	display: initial;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.task-header {
+	font-size: 25px;
+	color: #353536;
+}
+
+.close-task {
+	width: 28px;
+	height: 28px;
+	color: currentcolor;
+	cursor: pointer;
+}
+
+.task-details {
+	border-top: 1px solid #ddd;
+}
+
+.task-details label {
+	font-size: 15px;
+	font-weight: 500;
+	color: rgb(128, 126, 126);
+}
+
+.due-date {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 0;
+}
+
+.project {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 0;
+}
+
+.task-description {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.task-description textarea {
+	height: 50px;
+	max-height: 180px;
+	width: 100%;
+	border: none;
+	outline: none;
+	resize: none;
+}
+
+.task-description textarea::placeholder {
+	font-size: 15px;
+	font-weight: 500;
+	padding-top: 5px;
+}
+
+.subtasks-wrapper {
+	padding: 15px 0;
+	flex: 1;
+	overflow-y: auto;
+	height: 100%;
+	padding-right: 8px;
+}
+
+.add-subtask {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.add-subtask .new-subtask {
+	flex: 0 1 100%;
+}
+
+.plus-subtask {
+	display: block;
+	width: 97%;
+	outline: none;
+	border: 1px solid #fff;
+	padding: 8px 10px;
+	border-radius: 10px;
+	padding-left: 10px;
+	background: #e4e4e4;
+}
+
+.subtask {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 10px;
+	padding-left: 30px;
+	color: var(--task-color);
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.subtask-item {
+	display: none;
+}
+
+.subtask:hover {
+	transform: translatex(2px);
+}
+
+.subtask label {
+	cursor: pointer;
+}
+
+.subtask img {
+	width: 30px;
+	height: 30px;
+	color: currentcolor;
+	margin-top: -5px;
+	margin-right: -5px;
+}
+
+.subtask label .label.text {
+	position: relative;
+}
+
+.subtask label .label-text::before {
+	content: '';
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	left: 1px;
+	transition: 0.2s ease;
+}
+
+.subtask-item:checked+label .label-text::before {
+	background-color: var(--checkbox-color);
+	border: none;
+	background-image: url('../svg/check.svg');
+	background-repeat: no-repeat;
+	background-size: 10px;
+	background-position: center;
+	border: 1px solid var(--checkbox-color);
+}
+
+.footer {
+	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 10px 0;
+}
