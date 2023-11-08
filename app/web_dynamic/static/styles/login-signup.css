@@ -6,30 +6,31 @@
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
 }
+
 body {
-	background: #dfe9f5;
+	background-image: url('../images/login-signup.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
 }
 
 .wrapper {
 	width: 330px;
 	padding: 2rem 1rem;
-	margin: 50px auto;
-	background-color: #fff;
+	margin: 130px auto;
 	border-radius: 10px;
 	text-align: center;
-	box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+	background-image: inherit;
 }
 
 h1 {
 	font-size: 2rem;
 	color: #07001f;
 	margin-bottom: 1.2rem;
-}
-
-.msg {
-	font-size: 0.8em;
-	margin-top: 1.4rem;
-	color: #636363;
 }
 
 form input {
@@ -44,7 +45,7 @@ form input {
 
 button {
 	font-size: 1rem;
-	margin-top: 1.8rem;
+	margin-top: 1rem;
 	padding: 10px 0;
 	border-radius: 20px;
 	outline: none;
@@ -52,11 +53,11 @@ button {
 	width: 90%;
 	color: #fff;
 	cursor: pointer;
-	background: rgb(245, 98, 12);
+	background: #000;
 }
 
 button:hover {
-	background: rgb(255, 103, 2);
+	background: rgb(32, 32, 32);
 }
 
 input:focus {
@@ -78,18 +79,14 @@ input:focus {
 	font-size: 0.7rem;
 }
 
-.terms a {
-	color: rgb(17, 107, 143);
-	text-decoration: none;
-}
-
 .member {
 	font-size: 0.8em;
 	margin-top: 1.4rem;
-	color: #636363;
+	color: #000;
 }
 
 .member a {
-	color: rgb(17, 107, 143);
+	color: #fff;
 	text-decoration: none;
+	font-size: 1em;
 }

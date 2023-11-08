@@ -64,12 +64,11 @@
 .chat-content .chatbox {
 	height: 460px;
 	overflow-y: auto;
-	padding: 30px 20px 100px;
 }
 
 .chatbox .outgoing {
-  margin: 5px 0;
-  justify-content: flex-end;
+	margin: 5px 0;
+	justify-content: flex-end;
 }
 
 .chatbox .chat {
@@ -130,6 +129,6 @@
 	visibility: hidden;
 }
 
-.chat-input textarea:valid ~ span{
+.chat-input textarea:valid~span {
 	visibility: visible;
 }

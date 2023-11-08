@@ -28,3 +28,7 @@
 .chatbot-panel-open .chatbot-open {
 	display: none !important;
 }
+
+.task-panel-open .chatbot-open {
+	display: none !important;
+}
