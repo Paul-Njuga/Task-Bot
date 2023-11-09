@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Task Details</title>
+	<link rel="stylesheet" href="../static/styles/task-info.css">
+</head>
+
+<body>
+	<div class="task-container">
+		<div class="header">
+			<span class="task-header">{{ task.title }}</span>
+			<img src="../static/svg/close.svg" alt="" class="close-task">
+		</div>
+		<!-- task details start -->
+		<div class="task-details">
+			<div class="due-date">
+				<label>Due Date</label>
+				<span>{{ task.due_date }}</span>
+			</div>
+			<div class="project">
+				<label>Project</label>
+				<span>Tasks</span>
+			</div>
+			<div class="task-description">
+				<textarea name="task-input" placeholder="Add a note ..." spellcheck="false"></textarea>
+			</div>
+			<!-- subtasks wrapper start -->
+			<div class="subtasks-wrapper">
+				<div class="add-subtask">
+					<form class="new-subtask" action="#">
+						<input class="plus-subtask" type="text" name="new-subtask"
+							placeholder="Add a subtask, press [ Enter ] to save">
+					</form>
+				</div>
+				<ul>
+					{% for subtask in subtasks %}
+					<li>
+						<div class="subtask">
+							<input class="subtask-item" type="checkbox" id="{{ subtask.id }}"
+								data-name="{{ subtask.title }}" />
+							<label for="{{ subtask.id }}">
+								<span class="label-text">{{ subtask.title }}</span>
+							</label>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<!-- subtasks wrapper end -->
+		</div>
+		<!-- task details end -->
+
+		<!-- task footer start -->
+		<div class="footer">
+			<span>Created on {{ task.created_at }}</span>
+		</div>
+		<!-- task footer end -->
+	</div>
+</body>
+
+</html>
