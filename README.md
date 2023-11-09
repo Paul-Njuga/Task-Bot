@@ -1,2 +1,2 @@
-# Task_Bot
+# Task-Bot
 A task management app incorporating AI. 
