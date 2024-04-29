@@ -1,5 +1,4 @@
 *__pycache__/
-*.pyc
 app/setup/tb_dev_env
 Pipfile.lock
 *.code-workspace
