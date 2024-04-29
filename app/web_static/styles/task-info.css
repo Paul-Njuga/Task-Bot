@@ -13,6 +13,8 @@
 	background: #fff;
 	border-left: 1px solid #e3e7f7;
 	padding: 20px 15px 0 15px;
+	border-radius: 0 4px 4px 0;
+	position: relative;
 }
 
 .task-panel-open .task-container {
@@ -22,7 +24,6 @@
 .header {
 	display: flex;
 	justify-content: space-between;
-	position: relative;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -41,10 +42,10 @@
 
 .task-details {
 	border-top: 1px solid #ddd;
+	font-size: 12.5px;
 }
 
 .task-details label {
-	font-size: 15px;
 	font-weight: 500;
 	color: rgb(128, 126, 126);
 }
@@ -56,11 +57,19 @@
 	padding: 10px 0;
 }
 
+.due-date span {
+	font-weight: 300;
+}
+
 .project {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	padding: 10px 0;
+}
+
+.project span {
+	font-weight: 300;
 }
 
 .task-description {
@@ -69,17 +78,12 @@
 }
 
 .task-description textarea {
-	height: 50px;
+	height: 70px;
 	max-height: 180px;
 	width: 100%;
 	border: none;
 	outline: none;
 	resize: none;
-}
-
-.task-description textarea::placeholder {
-	font-size: 15px;
-	font-weight: 500;
 	padding-top: 5px;
 }
 
@@ -102,7 +106,7 @@
 
 .plus-subtask {
 	display: block;
-	width: 97%;
+	width: 100%;
 	outline: none;
 	border: 1px solid #fff;
 	padding: 8px 10px;
@@ -115,11 +119,9 @@
 	display: flex;
 	justify-content: space-between;
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding-left: 30px;
 	color: var(--task-color);
-	font-size: 13px;
-	font-weight: 500;
 }
 
 .subtask-item {
@@ -130,23 +132,26 @@
 	transform: translatex(2px);
 }
 
-.subtask label {
+.delete-subtask-btn {
+	border: none;
+	outline: none;
 	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
 }
 
-.subtask img {
-	width: 30px;
-	height: 30px;
+.delete-subtask {
+	width: 16px;
+	height: 16px;
 	color: currentcolor;
-	margin-top: -5px;
-	margin-right: -5px;
 }
 
-.subtask label .label.text {
+.subtask label .subtask-label.text {
 	position: relative;
 }
 
-.subtask label .label-text::before {
+.subtask label .subtask-label-text::before {
 	content: '';
 	position: absolute;
 	width: 14px;
@@ -155,9 +160,10 @@
 	border-radius: 10px;
 	left: 1px;
 	transition: 0.2s ease;
+	cursor: pointer;
 }
 
-.subtask-item:checked+label .label-text::before {
+.subtask-item:checked+label .subtask-label-text::before {
 	background-color: var(--checkbox-color);
 	border: none;
 	background-image: url('../svg/check.svg');
@@ -168,8 +174,34 @@
 }
 
 .footer {
-	text-align: center;
-	font-size: 15px;
-	font-weight: 500;
-	padding: 10px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 15px;
+	border-top: 1px solid #ddd;
+	background: #fff;
+}
+
+.footer span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+}
+
+.delete-task-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin-left: auto;
+}
+
+.delete-task {
+	width: 28px;
+	height: 28px;
+	color: currentcolor;
 }

@@ -7,6 +7,7 @@
 	background: #fff;
 	border-left: 1px solid #e3e7f7;
 	padding: 20px 15px 0 15px;
+	border-radius: 0 4px 4px 0;
 }
 
 .chatbot-panel-open .chatbot {

@@ -9,19 +9,36 @@
 		flex-direction: column;
 		overflow-y: auto;
 	}
+
 	.task-manager {
 		flex-direction: column;
 		overflow-y: auto;
 		width: 100%;
 		display: block;
 	}
+
 	.left-bar {
 		display: none;
 	}
+
 	.tasks-wrapper {
 		height: auto;
+		overflow-y: auto;
 	}
-	.chatbot-panel-open .chatbot{
+
+	.task-panel-open .task-container {
+		flex-direction: column;
+		overflow-y: auto;
+		width: 100%;
+		display: block;
+	}
+
+	.footer {
+		position: static;
+		border-top: none;
+	}
+
+	.chatbot-panel-open .chatbot {
 		flex-direction: column;
 		overflow-y: auto;
 		width: 100%;
@@ -33,10 +50,25 @@
 	.page-content {
 		padding: 40px 10px 0 10px;
 	}
+
 	.category {
 		padding: 20px;
 	}
+
+	.task-panel-open .task-container .task-details {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.footer {
+		position: static;
+		border-top: none;
+	}
+
 	.chatbot-panel-open .chatbot .chat-content {
-		padding: 40px 10px 0 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 	}
 }

@@ -11,7 +11,7 @@
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	padding: 30px 20px 0 20px;
+	padding: 20px 20px 0 20px;
 }
 
 .page-content .header {
@@ -24,7 +24,7 @@
 	justify-content: space-evenly;
 	width: 100%;
 	border-bottom: 1px solid #ddd;
-	padding: 20px 0;
+	padding: 0 0 20px 0;
 }
 
 .nav-item {
@@ -110,11 +110,11 @@
 	color: currentcolor;
 }
 
-label .label.text {
+label .task-label.text {
 	position: relative;
 }
 
-label .label-text::before {
+label .task-label-text::before {
 	content: '';
 	position: absolute;
 	width: 14px;
@@ -126,7 +126,7 @@ label .label-text::before {
 	cursor: pointer;
 }
 
-.task-item:checked+label .label-text::before {
+.task-item:checked+label .task-label-text::before {
 	background-color: var(--checkbox-color);
 	border: none;
 	background-image: url('../svg/check.svg');

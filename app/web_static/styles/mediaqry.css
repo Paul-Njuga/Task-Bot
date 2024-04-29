@@ -33,6 +33,11 @@
 		display: block;
 	}
 
+	.footer {
+		position: static;
+		border-top: none;
+	}
+
 	.chatbot-panel-open .chatbot {
 		flex-direction: column;
 		overflow-y: auto;
@@ -51,10 +56,19 @@
 	}
 
 	.task-panel-open .task-container .task-details {
-		padding: 40px 10px 0 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.footer {
+		position: static;
+		border-top: none;
 	}
 
 	.chatbot-panel-open .chatbot .chat-content {
-		padding: 40px 10px 0 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 	}
 }
