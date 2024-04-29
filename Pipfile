@@ -4,19 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-sqlalchemy = "*"
-mysqlclient = "*"
 flask = "*"
-pycodestyle = "*"
-replicate = "*"
 flask-cors = "*"
-flasgger = "*"
-aiohttp = "==3.9.0b0"
-requests = "*"
+mysqlclient = "*"
 openai = "*"
+requests = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.12"
-python_full_version = "3.12.0"
