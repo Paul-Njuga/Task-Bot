@@ -56,7 +56,7 @@
 
 			<!-- page content start -->
 			<div class="page-content">
-				<div class="header">Todays Tasks</div>
+				<div class="header">Tasks</div>
 				<!-- content categories start -->
 				<div class="content-categories">
 					<div class="label-wrapper">
@@ -79,27 +79,27 @@
 						</form>
 					</div>
 					<div class="task">
-						<input class="task-item" name="task" type="checkbox" id="item-1" />
-						<label for="item-1">
-							<span class="label-text">Create TaskBot webapp</span>
+						<input class="task-item" name="task" type="checkbox" id="task-1" />
+						<label for="task-1">
+							<span class="task-label-text">Create TaskBot webapp</span>
 						</label>
 						<button class="task-menu-open">
 							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
 						</button>
 					</div>
 					<div class="task">
-						<input class="task-item" name="task" type="checkbox" id="item-2" />
-						<label for="item-2">
-							<span class="label-text">Code in my sleep</span>
+						<input class="task-item" name="task" type="checkbox" id="task-2" />
+						<label for="task-2">
+							<span class="task-label-text">Code in my sleep</span>
 						</label>
 						<button class="task-menu-open">
 							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
 						</button>
 					</div>
 					<div class="task">
-						<input class="task-item" name="task" type="checkbox" id="item-3" />
-						<label for="item-3">
-							<span class="label-text">Become a smashing hit soft. eng.</span>
+						<input class="task-item" name="task" type="checkbox" id="task-3" />
+						<label for="task-3">
+							<span class="task-label-text">Become a smashing hit soft. eng.</span>
 						</label>
 						<button class="task-menu-open">
 							<img src="svg/subtasks.svg" alt="" class="dotmenu-subtasks">
@@ -135,7 +135,8 @@
 					<span>Tasks</span>
 				</div>
 				<div class="task-description">
-					<textarea name="task-input" placeholder="Add a note ..." spellcheck="false"></textarea>
+					<textarea name="task-input" placeholder="Add a note, press [ Enter ] to save ..."
+						spellcheck="false"></textarea>
 				</div>
 				<!-- subtasks wrapper start -->
 				<div class="subtasks-wrapper">
@@ -146,22 +147,31 @@
 						</form>
 					</div>
 					<div class="subtask">
-						<input class="subtask-item" name="subtask" type="checkbox" id="item-1" />
-						<label for="item-1">
-							<span class="label-text">Create subtask for a task</span>
+						<input class="subtask-item" name="subtask" type="checkbox" id="subtask-1" />
+						<label for="subtask-1">
+							<span class="subtask-label-text">Create subtask for a task</span>
 						</label>
+						<button class="delete-subtask-btn">
+							<img src="svg/subtask-bin.svg" alt="" class="delete-subtask">
+						</button>
 					</div>
 					<div class="subtask">
-						<input class="subtask-item" name="subtask" type="checkbox" id="item-2" />
-						<label for="item-2">
-							<span class="label-text">Another one</span>
+						<input class="subtask-item" name="subtask" type="checkbox" id="subtask-2" />
+						<label for="subtask-2">
+							<span class="subtask-label-text">Another one</span>
 						</label>
+						<button class="delete-subtask-btn">
+							<img src="svg/subtask-bin.svg" alt="" class="delete-subtask">
+						</button>
 					</div>
 					<div class="subtask">
-						<input class="subtask-item" name="subtask" type="checkbox" id="item-3" />
-						<label for="item-3">
-							<span class="label-text">DJ Khaleed</span>
+						<input class="subtask-item" name="subtask" type="checkbox" id="subtask-3" />
+						<label for="subtask-3">
+							<span class="subtask-label-text">DJ Khaleed</span>
 						</label>
+						<button class="delete-subtask-btn">
+							<img src="svg/subtask-bin.svg" alt="" class="delete-subtask">
+						</button>
 					</div>
 				</div>
 				<!-- subtasks wrapper end -->
@@ -171,6 +181,9 @@
 			<!-- task footer start -->
 			<div class="footer">
 				<span>Created on Today</span>
+				<button class="delete-task-btn">
+					<img src="svg/bin.svg" alt="" class="delete-task">
+				</button>
 			</div>
 			<!-- task footer end -->
 		</div>
