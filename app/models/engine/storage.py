@@ -83,6 +83,7 @@ class DBStorage:
             return user.task
         return None
 
+    # Todo: Delete this method & it's dependecies bcs we cld use .get(Task, taskId), then task.sub_tasks
     def get_subtasks(self, task_id):
         """
         Returns the subtasks object for a given Task
