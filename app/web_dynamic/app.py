@@ -1,14 +1,25 @@
 #!/usr/bin/python3
 """ Starts a Flask Web Application """
-import re
 import json
-import openai
+import re
+from datetime import datetime
 from os import getenv
+
+import openai
+from flask import (
+    Flask,
+    flash,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
 from models import storage
-from models.user import User
 from models.task import Task
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, url_for, redirect, flash, session, request
+from models.user import User
+from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 app.secret_key = '0e88398e480fdc1b37012b473df07d0608a11fddc8e27d79ad0815b4c0abbfb2'
@@ -24,14 +35,12 @@ def close_db(error):
 @app.route('/', strict_slashes=False)
 def landing_page():
     """ Renders the Task Bot landing page """
-    msg=''
-    return render_template('lp.html', msg=msg)
+    return render_template('lp.html')
 
 @app.route('/about', strict_slashes=False)
 def about():
     """ Renders the Task Bot about page """
-    msg=''
-    return render_template('lp-about.html', msg=msg)
+    return render_template('lp-about.html')
 
 @app.route('/signup', strict_slashes=False)
 def signup():
@@ -86,17 +95,16 @@ def login_post():
 
     if not re.match(r'[A-Za-z0-9]+', _username):
         msg = 'Username must contain only characters and numbers !'
-        return redirect(url_for('login', msg=msg))
     elif not _username or not _password:
         msg = 'Please fill out the form !'
-        return redirect(url_for('login', msg=msg))
     for user in storage.all(User).values():
         if user.username == _username:
             v_usr = user
     if not v_usr or not check_password_hash(v_usr.password, _password):
         msg = 'Incorrect email or password, try again.'
         return render_template('login.html', msg=msg)
-    
+
+    #Todo: Intergrate session & login management using flask-login
     session['loggedin'] = True
     session['id'] = v_usr.id
     session['username'] = v_usr.username
@@ -110,69 +118,131 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('landing_page')) #* Redirect to landing page
+    return redirect(url_for('landing_page'))
 
-
-@app.route('/to_do', strict_slashes=False)
+@app.route('/tasks', methods=['GET'])
 def index():
-    """ Taskbot to do tasks page """
-    _user_id = session['id']
+    """ Renders the index page """
+    return render_template('index.html')
+
+@app.route('/get_tasks', strict_slashes=False)
+def get_tasks():
+    """ Retrives tasks based on category """
+    _user_id = session.get('id')
     tasks = storage.get_tasks(_user_id)
+    status = request.args.get('status') # Retrieve the status from the request
+
+    # Convert the status string to Boolean
+    if status is not None:
+        status = bool(status.lower() == 'true')
+
     tsk_dict = []
     for task in tasks:
-        if not (task.completed):
+        if (task.completed == status):
             tsk_dict.append(task.to_dict())
-    return render_template('index.html', tasks=tsk_dict)
 
+    # Sort the tsk_dict based on the 'created_at' attribute
+    tsk_dict = sorted(tsk_dict, key=lambda x: datetime.fromisoformat(x['created_at']), reverse=True)
+    return jsonify(tsk_dict)
 
-@app.route('/completed', strict_slashes=False)
-def done_tasks():
-    """ Completed tasks page """
-    _user_id = session['id']
-    tasks = storage.get_tasks(_user_id)
-    tsk_dict = []
-    for task in tasks:
-        if (task.completed):
-            tsk_dict.append(task.to_dict())
-    return render_template('completed.html', tasks=tsk_dict)
+@app.route('/get_task_info/<taskId>', methods=['GET'])
+def get_task_info(taskId):
+    """ Retrieves task details based on the task ID """
+    #? I'm accessing tasks directly bcs each task.id is unique & it's faster
+    task = storage.get(Task, taskId)
+    subtasks = task.sub_tasks
+    if task:
+        subtsk_dict = []
+        for subtask in subtasks:
+            subtsk_dict.append(subtask.to_dict())
 
+        # Sort the subtsk_dict based on the 'created_at' attribute
+        subtsk_dict = sorted(subtsk_dict, key=lambda x: datetime.fromisoformat(x['created_at']), reverse=True)
+        # Render the task info HTML template
+        return render_template('task-info.html', task=task, subtasks=subtsk_dict)
+    return 'Task not found', 404
 
 @app.route('/update_task/<taskId>', methods=['POST'])
 def update_task_completion(taskId):
-    """ Update a task as completed """
-    _user_id = session['id']
-    tasks = storage.get_tasks(_user_id)
-    for task in tasks:
-        if task.id == taskId:
+    """ Update a task as completed/uncompleted """
+    _user_id = session.get('id')
+    task = storage.get(Task, taskId)
+    if task:
+        # Toggle task completion status based on the checkbox status
+        status = request.form.get('status')  # Checkbox status
+        if status == 'true':
             task.completed = True
-            task.save()
-            return 'Task added successfully', 200
+        else:
+            task.completed = False
+        task.save()
+        return 'Task status updated successfully', 200
     return 'Task not found', 404
 
+@app.route('/update_subtask/<taskId>/<subtaskId>', methods=['POST'])
+def update_subtask_completion(taskId, subtaskId):
+    """ Update a subtask as completed/uncompleted """
+    _user_id = session.get('id')
+    task = storage.get(Task, taskId)
+    subtasks = task.sub_tasks
+    if task and subtasks:
+        for subtask in subtasks:
+            if subtask.id == subtaskId:
+                # Toggle task completion status based on the checkbox status
+                status = request.form.get('status')  # Checkbox status
+                if status == 'true':
+                    subtask.completed = True
+                else:
+                    subtask.completed = False
+                subtask.save()
+                return 'Subtask status updated successfully', 200
+            return 'Subtask not found', 404
 
 @app.route('/add_task', methods=['POST'], strict_slashes=False)
 def add_task():
     """ Add a new task """
-    _user_id = session['id']
-    if 'new-task' in request.form:
-        title = request.form.get('new-task')
+    _user_id = session.get('id')
+    title = request.form.get('new-task')
+    if title:
         new_task = Task(user_id=_user_id, title=title)
         storage.new(new_task)
         storage.save()
-        return redirect(url_for('index'))
+        return jsonify(new_task.to_dict())
+    return 'Task creation was unsuccessful', 404
 
+@app.route('/add_subtask/<taskId>', methods=['POST'], strict_slashes=False)
+def add_subtask(taskId):
+    """ Add a new subtask based on task id """
+    task = storage.get(Task, taskId)
+    title = request.form.get('new-subtask')
+    if task and title:
+        new_subtask = SubTask(task_id=taskId, title=title)
+        storage.new(new_subtask)
+        storage.save()
+        return jsonify(new_subtask.to_dict())
+    return 'Subtask creation was unsuccessful', 404
 
 @app.route('/add_gen_task', methods=['POST'], strict_slashes=False)
 def add_gen_task():
     """ Add a new generated task """
-    _user_id = session['id']
+    _user_id = session.get('id')
     title = request.json.get('title')
     description = request.json.get('description')
-    new_task = Task(user_id=_user_id, title=title, description=description)
-    storage.new(new_task)
-    storage.save()
-    return 'Task added successfully', 200
+    if title and description:
+        new_task = Task(user_id=_user_id, title=title, description=description)
+        storage.new(new_task)
+        storage.save()
+        return 'Task added successfully', 200
+    return 'Generated task could not be added', 404
 
+@app.route('/delete_task/<taskId>', methods=['DELETE'])
+def delete_task(taskId):
+    """ Deletes a task based on taskId"""
+    task = storage.get(Task, taskId)
+    if task:
+        storage.delete(task)
+        storage.save()
+        return 'Task deleted successfully', 200
+    return 'Task not found', 404
 
 def query_chatgpt(user_input):
     """ Queries Chat GPT """
